@@ -3,7 +3,8 @@
 myfind(){
 for i in $(ls $1)
 do
-    check=`echo "$1/$2" | grep -io "$1/$i"`  
+    check=`echo "$1/$i" | grep -io "$1/$2"`
+      
     [ $check ] && [ -$3 $1/$i ] && echo $1/$i
     [ -d $1/$i ] && myfind $1/$i $2 $3
 done
@@ -12,6 +13,7 @@ done
 
 ftype=e
 dir=$1
+file=""
 shift
 until [ -z "$1" ] 
 do
@@ -19,8 +21,7 @@ do
         -type  ) ftype=$2;;
         -iname ) file=$2;;
     esac
-    shift
-    shift
+    shift 2
 done
 
 case $ftype in
