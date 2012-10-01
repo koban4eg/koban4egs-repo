@@ -3,7 +3,7 @@
 myfind(){
 for i in $(ls $1)
 do
-    check=`echo "$1/$i" | grep -io "$1/$2"`
+    check=`echo "$i" | grep -io "$2"`
       
     [ $check ] && [ -$3 $1/$i ] && echo $1/$i
     [ -d $1/$i ] && myfind $1/$i $2 $3
